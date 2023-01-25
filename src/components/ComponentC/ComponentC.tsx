@@ -1,4 +1,5 @@
-import TableA from "../TableA";
+import DialogX from "../DialogX";
+import TableX from "../TableX";
 
 export default function ComponentC() {
   const tableData = [
@@ -12,7 +13,19 @@ export default function ComponentC() {
     <div>
       <h3>ComponentC</h3>
 
-      <TableA data={tableData} />
+      <TableX
+        data={tableData}
+        dialogComponent={({ isDialogVisible, handleCloseDialog }) => (
+          <DialogX
+            onClose={() => {
+              console.log("evento onClose aqui");
+              handleCloseDialog();
+            }}
+            open={isDialogVisible}
+            title="Titulo vindo do ComponentC"
+          />
+        )}
+      />
     </div>
   );
 }

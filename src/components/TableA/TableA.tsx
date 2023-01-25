@@ -1,5 +1,6 @@
-import { useState } from "react";
 import DialogA from "../DialogA";
+import TableBase from "../TableBase";
+import { DialogComponentProps } from "../TableBase/TableBase";
 
 export type TableAProps = {
   data: string[][];
@@ -7,49 +8,30 @@ export type TableAProps = {
 };
 
 export default function TableA({ data, title }: TableAProps) {
-  const [isDialogVisible, setIsDialogVisible] = useState(false);
-
-  function handleClickOpenDialog() {
-    setIsDialogVisible(true);
-  }
-
-  function handleCloseDialog() {
-    setIsDialogVisible(false);
-  }
+  const DefaultDialog = ({
+    isDialogVisible,
+    handleCloseDialog,
+  }: DialogComponentProps) => (
+    <DialogA
+      open={isDialogVisible}
+      title={`Dialog da TabelaA | ${title || "-"}`}
+      onClose={handleCloseDialog}
+    />
+  );
 
   return (
-    <>
-      <table>
-        {title && <caption>{title}</caption>}
+    <TableBase
+      data={data}
+      title={title}
+      dialogComponent={({ isDialogVisible, handleCloseDialog }) => (
+        <DefaultDialog
+          isDialogVisible={isDialogVisible}
+          handleCloseDialog={handleCloseDialog}
+        />
+      )}
+    />
 
-        <thead>
-          <tr>
-            {data?.[0].map((txt, i) => (
-              <th key={i}>{txt}</th>
-            ))}
-          </tr>
-        </thead>
-
-        <tbody>
-          {data.slice(1).map((row, i) => (
-            <tr key={i}>
-              {row.map((txt, j) => (
-                <td key={j}>{txt}</td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
-
-      <button type="button" onClick={handleClickOpenDialog}>
-        Abrir Dialog
-      </button>
-
-      <DialogA
-        open={isDialogVisible}
-        title={`Dialog da TabelaA | ${title || "-"}`}
-        onClose={handleCloseDialog}
-      />
-    </>
+    // Ou implicitamente:
+    // <TableBase data={data} title={title} dialogComponent={DefaultDialog} />
   );
 }
