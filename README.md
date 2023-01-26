@@ -8,12 +8,12 @@ Aplicação Web hospedada no Github Pages: [https://guilhermerodrigues680.github
 
 ### Permite execução e edição
 
-**CodeSandbox**: [https://githubbox.com/guilhermerodrigues680/demo-react-composition/tree/main]
+- **CodeSandbox**: [https://githubbox.com/guilhermerodrigues680/demo-react-composition/tree/main]
 
 ### Permite somente visualização do código fonte
 
-**github.dev**: [https://github.dev/guilhermerodrigues680/demo-react-composition/tree/main]
-**github1s**: [https://github1s.com/guilhermerodrigues680/demo-react-composition/tree/main]
+- **github.dev**: [https://github.dev/guilhermerodrigues680/demo-react-composition/tree/main]
+- **github1s**: [https://github1s.com/guilhermerodrigues680/demo-react-composition/tree/main]
 
 ## Executando o projeto localmente
 
